@@ -1,3 +1,5 @@
 Check text for uncommon words. Keep language simple.
 
+    cat sample.txt | python word-check.py
+
 TODO: Add more sources and links to them.
