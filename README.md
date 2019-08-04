@@ -1,7 +1,7 @@
 Uncommon Word Checker
 =====================
 
-Check text for uncommon words in the English language. An uncommon word is one that's not list of the 1,000 most common words in the language. The list used by this script is based upon combining a few I've found, so the list I use is larger than 1,000.
+Check text for uncommon words in the English language. An uncommon word is one that's not on any list in `sources`. These are several "1,000 Most Common Words in English" lists which I combined to make mine.
 
 ```bash
 cat sample.txt | python word-check.py
@@ -26,8 +26,7 @@ TODO: Remove a few words by hand. Not sure that I want to be warned about using 
 Sources
 -------
 
-* [Wikipedia: _Punctuation of English
-_](https://en.wikipedia.org/wiki/Punctuation_of_English)
+* [Wikipedia: _Punctuation of English_](https://en.wikipedia.org/wiki/Punctuation_of_English)
 * Fry, Kress & Fountoukidis, _The Reading Teache's Book of Lists_, 4e, (c) 2000 by Prentice Hall
 
 > The first 25 make up about a third of all printed material. The first 100 make up about half of all written material, and the first 300 make up about 65% of all written material.
