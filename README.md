@@ -4,7 +4,7 @@ Uncommon Word Checker
 Check text for uncommon words in the English language. An uncommon word is one that's not on any list in `sources`. These are several "1,000 Most Common Words in English" lists which I combined to make mine.
 
 ```bash
-cat sample.txt | python word-check.py
+cat ./samples/sample-1.txt | python word-check.py
 ```
 
 Looks like this
@@ -15,10 +15,8 @@ Generating the List
 -------------------
 
 ```bash
-cd sources
-
 # Add tr '\n' '|' for a huge JavaScript regex.
-cat source-*.txt | grep -v "#" | sort | uniq | tr '[:upper:]' '[:lower:]'
+cat sources/source-*.txt | grep -v "#" | sort -u | tr '[:upper:]' '[:lower:]'
 ```
 
 TODO: Remove a few words by hand. Not sure that I want to be warned about using "Ireland"

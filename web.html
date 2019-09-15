@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uncommon Word Check</title>
+    <style type="text/css">
+        .entry {
+            width: 100%;
+            height: 700px;
+            border: 1px dotted #666;
+            padding: 1em;
+            box-sizing: border-box;
+        }
+        .uncommon {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uncommon Word Check</h1>
+    <div contenteditable="true" class="entry"></div>
+
+    <script type="text/javascript">
+        (() => {
+            const wordRegex = /(africa|america|britain|british|christ)/g;
+            const entryArea = document.querySelector('.entry');
+
+            function debounce(func, wait, immediate) {
+                let timeout;
+
+                return function() {
+                    const context = this;
+                    const args = arguments;
+                    const later = function() {
+                        timeout = null;
+                        if (!immediate) {
+                            func.apply(context, args)
+                        };
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+
+                    if (callNow) {
+                        func.apply(context, args)
+                    };
+                };
+            };
+
+            const listener = e => {
+                const text = entryArea.textContent;
+                const matches = text.matchAll(wordRegex);
+
+                console.log('-----')
+                for (const match of matches) {
+                    console.log('>>> Match', match)
+                }
+            }
+
+            const debouncedListener = debounce(listener, 10);
+
+            entryArea.addEventListener('input', debouncedListener)
+        })(window, document);
+    </script>
+</body>
+</html>
